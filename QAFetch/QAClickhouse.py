@@ -10,6 +10,10 @@ from QUANTAXIS.QAData import (QA_DataStruct_Day, QA_DataStruct_Future_day,
                               QA_DataStruct_Stock_min)
 from QUANTAXIS.QAUtil import QA_util_get_real_date
 
+'''
+这个模块可以帮助开发人员连接到ClickHouse数据库，并执行各种查询操作，以获取股票和指数的数据。
+'''
+
 
 def promise_list(x): return [x] if isinstance(x, str) else x
 
