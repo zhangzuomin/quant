@@ -1,3 +1,27 @@
+# coding: utf-8
+#
+# The MIT License (MIT)
+#
+# Copyright (c) 2016-2021 yutiansut/QUANTAXIS
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 
 import pandas as pd
 import random
@@ -6,14 +30,13 @@ from QUANTAXIS.QAUtil.QADate import QA_util_date_str2int
 from QUANTAXIS.QAUtil.QACode import QA_util_code_tostr
 
 '''
-这个模块是用于获取股票市场的融资融券数据和资金流向数据的工具模块
+这个Python模块的主要功能是从上海证券市场和深圳证券市场下载融资融券数据，并将这些数据加载到pandas DataFrame中
 '''
 
 
 
-
 _sh_url = 'http://www.sse.com.cn/market/dealingdata/overview/margin/a/rzrqjygk{}.xls'
-_sz_url = 'http://www.szse.cn/api/report/ShowReport.szse?SHOWTYPE=xlsx&CATALOGID=1837_xxpl&txtDate={}&tab2PAGENO=1&ENCODE=1&TABKEY=tab2&random={}'
+_sz_url = 'http://www.szse.cn/api/report/ShowReport?SHOWTYPE=xlsx&CATALOGID=1837_xxpl&txtDate={}&tab2PAGENO=1&random={}&TABKEY=tab2'
 
 
 def QA_fetch_get_sh_margin(date):
@@ -34,8 +57,13 @@ def QA_fetch_get_sh_margin(date):
         pandas.DataFrame -- res for margin data
     """
     if date in trade_date_sse:
+        # print(date)
+        # data = pd.read_excel(_sh_url.format(QA_util_date_str2int
+        #                                     (date)), sheet_name='融资融券明细信息').assign(date=date).assign(sse='sh')
+
         data = pd.read_excel(_sh_url.format(QA_util_date_str2int
                                             (date)), 1).assign(date=date).assign(sse='sh')
+
 
         data.columns = ['code', 'name', 'leveraged_balance', 'leveraged_buyout',
                         'leveraged_payoff', 'margin_left', 'margin_sell', 'margin_repay', 'date', 'sse']
@@ -61,10 +89,14 @@ def QA_fetch_get_sz_margin(date):
 
     if date in trade_date_sse:
         sz_url = _sz_url.format(date, random.random())
-        data = pd.read_excel(sz_url).assign(date=date, sse='sz')
+        # data = pd.read_excel(sz_url).assign(date=date, sse='sz')
+        data = pd.read_excel(sz_url)
+        # data.columns = ['code', 'name', 'leveraged_buyout', 'leveraged_balance',
+        #                 'margin_sell', 'margin_left', 'margin_balance', 'totalbalance', 'date', 'sse']
         data.columns = ['code', 'name', 'leveraged_buyout', 'leveraged_balance',
-                        'margin_sell', 'margin_left', 'margin_balance', 'totalbalance', 'date', 'sse']
+                        'margin_sell', 'margin_left', 'margin_balance', 'totalbalance']
         data.code = data.code.apply(lambda x: ('00000'+str(x))[-6:])
+        print(data)
         return data
     else:
         pass
@@ -82,5 +114,5 @@ def QA_fetch_zjlx(code=None):
 
 
 if __name__ == "__main__":
-    print(QA_fetch_get_sz_margin('2018-01-25'))
-    print(QA_fetch_get_sh_margin('2018-01-25'))
+    print(QA_fetch_get_sz_margin('2023-12-25'))
+    # print(QA_fetch_get_sh_margin('2023-12-25'))
