@@ -35,6 +35,11 @@ from QUANTAXIS.QASetting.QALocalize import qa_path, download_path
 参见PYTDX 1.65
 """
 
+'''
+这个模块的功能是用于下载和解析历史财务数据文件，并提供一些相关的功能和方法
+'''
+
+
 FINANCIAL_URL = 'http://down.tdx.com.cn:8001/tdxfin/gpcw.txt'
 
 
