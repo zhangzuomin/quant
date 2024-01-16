@@ -163,7 +163,7 @@ def get_ip_list_by_ping(ip_list=[], _type='stock'):
     best_ip = get_ip_list_by_multi_process_ping(ip_list, 1, _type)
     return best_ip[0]
 
-
+# get_ip_list_by_multi_process_ping函数的主要功能是通过并行ping操作从给定的IP列表中选择最佳的IP
 def get_ip_list_by_multi_process_ping(ip_list=[], n=0, _type='stock',
                                       cache_age=86400):
     ''' 根据ping排序返回可用的ip列表
@@ -205,7 +205,7 @@ def get_ip_list_by_multi_process_ping(ip_list=[], n=0, _type='stock',
         print('ALL IP PING TIMEOUT!')
         return [{'ip': None, 'port': None}]
 
-
+# 定义了全局变量best_ip
 global best_ip
 best_ip = {
     'stock': {
