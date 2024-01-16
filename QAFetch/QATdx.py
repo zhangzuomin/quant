@@ -467,7 +467,7 @@ def QA_fetch_get_stock_latest(code, frequence='day', ip=None, port=None):
             .drop(['year', 'month', 'day', 'hour', 'minute', 'datetime'],
                   axis=1)
 
-
+# QA_fetch_get_stock_realtime函数的主要功能是获取指定股票的实时行情数据，实时数据指标丰富，在data列表中有字段头
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_realtime(code=['000001', '000002'], ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
@@ -502,6 +502,8 @@ def QA_fetch_get_stock_realtime(code=['000001', '000002'], ip=None, port=None):
              'bid_vol5']]
         return data.set_index(['datetime', 'code'])
 
+
+# QA_fetch_get_stock_realtime函数的主要功能是获取指定指数的实时行情数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_index_realtime(code=['000001'], ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
