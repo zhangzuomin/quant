@@ -60,7 +60,7 @@ def init_fetcher():
 
     pass
 
-
+# ping函数的主要功能是测试与指定的股票或期货服务器的连接速度
 def ping(ip, port=7709, type_='stock'):
     api = TdxHq_API()
     apix = TdxExHq_API()
@@ -103,7 +103,7 @@ def ping(ip, port=7709, type_='stock'):
             print('BAD RESPONSE {}'.format(ip))
         return datetime.timedelta(9, 9, 0)
 
-
+# select_best_ip函数的主要功能是选择最佳的通达信(TDX)服务器IP
 def select_best_ip():
     QA_util_log_info('Selecting the Best Server IP of TDX')
 
@@ -158,7 +158,7 @@ def select_best_ip():
             best_stock_ip['ip'], best_future_ip['ip']))
     return ipbest
 
-
+# get_ip_list_by_ping函数的主要功能是通过ping操作从给定的IP列表中选择最佳的IP
 def get_ip_list_by_ping(ip_list=[], _type='stock'):
     best_ip = get_ip_list_by_multi_process_ping(ip_list, 1, _type)
     return best_ip[0]
