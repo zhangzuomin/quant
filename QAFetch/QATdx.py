@@ -216,10 +216,9 @@ best_ip = {
     }
 }
 
-
 # return 1 if sh, 0 if sz
 
-
+# get_extensionmarket_ip函数的主要功能是获取最佳的期货服务器IP和端口
 def get_extensionmarket_ip(ip, port):
     global best_ip
     if ip is None and port is None and best_ip['future']['ip'] is None and \
@@ -236,7 +235,7 @@ def get_extensionmarket_ip(ip, port):
         pass
     return ip, port
 
-
+# get_mainmarket_ip函数的主要功能是获取最佳的股票服务器IP和端口
 def get_mainmarket_ip(ip, port):
     """[summary]
     Arguments:
@@ -261,7 +260,7 @@ def get_mainmarket_ip(ip, port):
         pass
     return ip, port
 
-
+# QA_fetch_get_security_bars函数的主要功能是获取指定股票的历史K线数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_security_bars(code, _type, lens, ip=None, port=None):
     """按bar长度推算数据
@@ -298,7 +297,7 @@ def QA_fetch_get_security_bars(code, _type, lens, ip=None, port=None):
         else:
             return None
 
-
+# QA_fetch_get_stock_day函数的主要功能是获取指定股票在指定日期范围内的日线或以上级别的数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_day(code, start_date, end_date, if_fq='00',
                            frequence='day', ip=None, port=None):
@@ -376,7 +375,7 @@ def QA_fetch_get_stock_day(code, start_date, end_date, if_fq='00',
         else:
             print(e)
 
-
+# QA_fetch_get_stock_day函数的主要功能是获取指定股票在指定日期范围内的分钟线或以上级别的数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_min(code, start, end, frequence='1min', ip=None,
                            port=None):
@@ -427,7 +426,7 @@ def QA_fetch_get_stock_min(code, start, end, frequence='1min', ip=None,
                                       inplace=False)[start:end]
         return data.assign(datetime=data['datetime'].apply(lambda x: str(x)))
 
-
+# QA_fetch_get_stock_latest函数的主要功能是获取指定股票的最新K线数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_latest(code, frequence='day', ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
