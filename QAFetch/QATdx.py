@@ -538,6 +538,9 @@ def QA_fetch_get_index_realtime(code=['000001'], ip=None, port=None):
              'bid_vol5']]
         return data.set_index(['datetime', 'code'])
 
+
+      
+## QA_fetch_get_bond_realtime函数的主要功能是获取指定债券的实时行情数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_bond_realtime(code=['010107'], ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
@@ -576,6 +579,10 @@ def QA_fetch_get_bond_realtime(code=['010107'], ip=None, port=None):
                         bid1=data.bid1/10, bid2=data.bid2/10, bid3=data.bid3/10, bid4=data.bid4/10, bid5=data.bid5/10)
 
         return data.set_index(['datetime', 'code'])
+
+
+
+# QA_fetch_depth_market_data函数的主要功能是获取指定股票的深度市场数据，也被称为Level2数据或者订单簿数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_depth_market_data(code=['000001', '000002'], ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
@@ -616,25 +623,25 @@ def QA_fetch_depth_market_data(code=['000001', '000002'], ip=None, port=None):
 737×××新股配售；
 900×××B股。
 深市
-第1位	第二位	第3-6位	含义
-0	0	XXXX	A股证券
-0	3	XXXX	A股A2权证
-0	7	XXXX	A股增发
-0	8	XXXX	A股A1权证
-0	9	XXXX	A股转配
-1	0	XXXX	国债现货
-1	1	XXXX	债券
-1	2	XXXX	可转换债券
-1	3	XXXX	国债回购
-1	7	XXXX	原有投资基金
-1	8	XXXX	证券投资基金
-2	0	XXXX	B股证券
-2	7	XXXX	B股增发
-2	8	XXXX	B股权证
-3	0	XXXX	创业板证券
-3	7	XXXX	创业板增发
-3	8	XXXX	创业板权证
-3	9	XXXX	综合指数/成份指数
+第1位	第二位	第3-6位	    含义
+0	      0	    XXXX	  A股证券
+0	      3	    XXXX	  A股A2权证
+0	      7	    XXXX	  A股增发
+0	      8	    XXXX	  A股A1权证
+0	      9	    XXXX	  A股转配
+1	      0	    XXXX	  国债现货
+1	      1	    XXXX	  债券
+1	      2	    XXXX	  可转换债券
+1	      3	    XXXX	  国债回购
+1	      7	    XXXX	  原有投资基金
+1	      8	    XXXX	  证券投资基金
+2	      0	    XXXX	  B股证券
+2	      7	    XXXX	  B股增发
+2	      8	    XXXX	  B股权证
+3	      0	    XXXX	  创业板证券
+3	      7	    XXXX	  创业板增发
+3	      8	    XXXX	  创业板权证
+3	      9	    XXXX	  综合指数/成份指数
 深市A股票买卖的代码是以000打头，如：顺鑫农业：股票代码是000860。
 B股买卖的代码是以200打头，如：深中冠B股，代码是200018。
 中小板股票代码以002打头，如：东华合创股票代码是002065。
@@ -643,7 +650,7 @@ B股买卖的代码是以200打头，如：深中冠B股，代码是200018。
 @yutiansut
 '''
 
-
+# for_sz函数的主要功能是根据深圳证券交易所的股票代码来分类股票的类型
 def for_sz(code):
     """深市代码分类
     Arguments:
@@ -677,6 +684,7 @@ def for_sz(code):
         return 'undefined'
 
 
+# for_sz函数的主要功能是根据上海证券交易所的股票代码来分类股票的类型
 def for_sh(code):
     if str(code)[0] == '6':
         return 'stock_cn'
