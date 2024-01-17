@@ -1252,6 +1252,7 @@ def QA_fetch_get_index_transaction(code, start, end, retry=2, ip=None,
             return None
 
 
+# QA_fetch_get_stock_transaction_realtime 函数的主要作用是从通达信（TDX）服务器获取指定股票的实时分笔成交数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_transaction_realtime(code, ip=None, port=None):
     '实时分笔成交 包含集合竞价 buyorsell 1--sell 0--buy 2--盘前'
@@ -1277,8 +1278,8 @@ def QA_fetch_get_stock_transaction_realtime(code, ip=None, port=None):
     except:
         return None
 
-
-@retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
+# QA_fetch_get_stock_xdxr 函数的主要作用是从通达信（TDX）服务器获取指定股票的除权除息数据
+@retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100) 
 def QA_fetch_get_stock_xdxr(code, ip=None, port=None):
     '除权除息'
     ip, port = get_mainmarket_ip(ip, port)
