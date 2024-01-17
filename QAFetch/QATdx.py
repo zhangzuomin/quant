@@ -702,7 +702,7 @@ def for_sh(code):
     else:
         return 'undefined'
 
-
+# QA_fetch_get_stock_list函数的主要功能是获取指定类型的股票列表
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_list(type_='stock', ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
@@ -754,6 +754,7 @@ def QA_fetch_get_stock_list(type_='stock', ip=None, port=None):
             #    .assign(quanpin=data['name'].apply(lambda x: ''.join(lazy_pinyin(x))))
 
 
+# QA_fetch_get_stock_list函数的主要功能是获取股票指数列表
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_index_list(ip=None, port=None):
     """获取指数列表
@@ -785,6 +786,7 @@ def QA_fetch_get_index_list(ip=None, port=None):
             name=data['name'].apply(lambda x: str(x)[0:6]))
 
 
+# QA_fetch_get_bond_list函数的主要功能是获取债券列表
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_bond_list(ip=None, port=None):
     """bond
@@ -810,6 +812,8 @@ def QA_fetch_get_bond_list(ip=None, port=None):
         sh = sh.assign(sec=sh.code.apply(for_sh))
         return pd.concat([sz, sh], sort=False).query('sec=="bond_cn"').sort_index().assign(
             name=data['name'].apply(lambda x: str(x)[0:6]))
+
+
 
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_bond_day(code, start_date, end_date, frequence='day', ip=None,
