@@ -814,7 +814,7 @@ def QA_fetch_get_bond_list(ip=None, port=None):
             name=data['name'].apply(lambda x: str(x)[0:6]))
 
 
-
+# QA_fetch_get_bond_day函数的主要功能是获取指定债券的日线数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_bond_day(code, start_date, end_date, frequence='day', ip=None,
                           port=None):
@@ -854,6 +854,7 @@ def QA_fetch_get_bond_day(code, start_date, end_date, frequence='day', ip=None,
         return data.assign(date=data['date'].apply(lambda x: str(x)[0:10]))
 
 
+# QA_fetch_get_bond_day函数的主要功能是获取指定债券的分钟线数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_bond_min(code, start, end, frequence='1min', ip=None,
                           port=None):
@@ -907,6 +908,7 @@ def QA_fetch_get_bond_min(code, start, end, frequence='1min', ip=None,
         return data.assign(datetime=data['datetime'].apply(lambda x: str(x)))
 
 
+# QA_fetch_get_index_day函数获取指定指数的日线数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_index_day(code, start_date, end_date, frequence='day',
                            ip=None, port=None):
@@ -967,6 +969,7 @@ def QA_fetch_get_index_day(code, start_date, end_date, frequence='day',
         return data.assign(date=data['date'].apply(lambda x: str(x)[0:10]))
 
 
+# QA_fetch_get_index_min函数获取指定指数的分钟线数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_index_min(code, start, end, frequence='1min', ip=None,
                            port=None):
@@ -1025,6 +1028,7 @@ def QA_fetch_get_index_min(code, start, end, frequence='1min', ip=None,
         return data.assign(datetime=data['datetime'].apply(lambda x: str(x)))
 
 
+# QA_fetch_get_index_latest函数获取指定指数的最新数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_index_latest(code, frequence='day', ip=None, port=None):
     ip, port = get_mainmarket_ip(ip, port)
@@ -1083,6 +1087,7 @@ def QA_fetch_get_index_latest(code, frequence='day', ip=None, port=None):
                   axis=1)
 
 
+# __QA_fetch_get_stock_transaction函数的主要功能是获取指定股票在指定日期的交易数据
 def __QA_fetch_get_stock_transaction(code, day, retry, api):
     batch_size = 2000  # 800 or 2000 ? 2000 maybe also works
     data_arr = []
@@ -1116,7 +1121,7 @@ def __QA_fetch_get_stock_transaction(code, day, retry, api):
             data_['datetime'] = data_['datetime'].apply(lambda x: str(x)[0:19])
             return data_
 
-
+__QA_fetch_get_index_transaction函数的主要功能是获取指定指数在指定日期的交易数据
 def __QA_fetch_get_index_transaction(code, day, retry, api):
     batch_size = 2000  # 800 or 2000 ? 2000 maybe also works
     data_arr = []
@@ -1151,6 +1156,7 @@ def __QA_fetch_get_index_transaction(code, day, retry, api):
             return data_
 
 
+# QA_fetch_get_stock_transaction函数的主要功能是获取指定股票在指定日期范围内的交易数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_transaction(code, start, end, retry=2, ip=None,
                                    port=None):
@@ -1196,8 +1202,9 @@ def QA_fetch_get_stock_transaction(code, start, end, retry=2, ip=None,
                 datetime=data['datetime'].apply(lambda x: str(x)[0:19]))
         else:
             return None
+          
 
-
+# QA_fetch_get_stock_transaction函数的主要功能是获取指定指数在指定日期范围内的交易数据
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_index_transaction(code, start, end, retry=2, ip=None,
                                    port=None):
