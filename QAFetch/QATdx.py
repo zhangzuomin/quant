@@ -1428,6 +1428,7 @@ global extension_market_list
 extension_market_list = None
 
 
+# QA_fetch_get_extensionmarket_count 函数的主要作用是从扩展市场（例如期货市场）的通达信（TDX）服务器获取市场的数量和信息
 def QA_fetch_get_extensionmarket_count(ip=None, port=None):
     ip, port = get_extensionmarket_ip(ip, port)
     apix = TdxExHq_API()
@@ -1437,7 +1438,9 @@ def QA_fetch_get_extensionmarket_count(ip=None, port=None):
         return extension_market_info
 
 
-def QA_fetch_get_extensionmarket_info(ip=None, port=None):
+
+# QA_fetch_get_extensionmarket_info 函数的主要作用是从扩展市场（例如期货市场）的通达信（TDX）服务器获取市场的信息
+def QA_fetch_get_extensionmarket_info(ip=None, port=None): 
     ip, port = get_extensionmarket_ip(ip, port)
     apix = TdxExHq_API()
     with apix.connect(ip, port):
@@ -1446,6 +1449,7 @@ def QA_fetch_get_extensionmarket_info(ip=None, port=None):
         return extension_market_info
 
 
+# QA_fetch_get_extensionmarket_list函数的主要作用是从扩展市场（例如期货市场）的通达信（TDX）服务器获取所有的交易品种列表
 def QA_fetch_get_extensionmarket_list(ip=None, port=None):
     '期货代码list'
     ip, port = get_extensionmarket_ip(ip, port)
