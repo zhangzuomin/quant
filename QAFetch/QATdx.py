@@ -1310,6 +1310,8 @@ def QA_fetch_get_stock_xdxr(code, ip=None, port=None):
             return None
 
 
+
+# QA_fetch_get_stock_info函数的主要功能是获取指定股票的基本信息，这个方法反馈信息丰富
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_info(code, ip=None, port=None):
     '股票基本信息'
@@ -1320,6 +1322,9 @@ def QA_fetch_get_stock_info(code, ip=None, port=None):
         return api.to_df(api.get_finance_info(market_code, code))
 
 
+
+
+# QA_fetch_get_stock_block函数的主要功能是获取股票的板块数据，好像板块并不丰富
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_stock_block(ip=None, port=None):
     '板块数据'
