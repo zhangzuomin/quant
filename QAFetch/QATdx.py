@@ -1429,13 +1429,13 @@ extension_market_list = None
 
 
 # QA_fetch_get_extensionmarket_count 函数的主要作用是从扩展市场（例如期货市场）的通达信（TDX）服务器获取市场的数量和信息
-def QA_fetch_get_extensionmarket_count(ip=None, port=None):
-    ip, port = get_extensionmarket_ip(ip, port)
-    apix = TdxExHq_API()
-    with apix.connect(ip, port):
-        global extension_market_info
-        extension_market_info = apix.to_df(apix.get_markets())
-        return extension_market_info
+# def QA_fetch_get_extensionmarket_count(ip=None, port=None):
+#     ip, port = get_extensionmarket_ip(ip, port)
+#     apix = TdxExHq_API()
+#     with apix.connect(ip, port):
+#         global extension_market_info
+#         extension_market_info = apix.to_df(apix.get_markets())
+#         return extension_market_info
 
 
 
@@ -1447,6 +1447,7 @@ def QA_fetch_get_extensionmarket_info(ip=None, port=None): 
         global extension_market_info
         extension_market_info = apix.to_df(apix.get_markets())
         return extension_market_info
+
 
 
 # QA_fetch_get_extensionmarket_list函数的主要作用是从扩展市场（例如期货市场）的通达信（TDX）服务器获取所有的交易品种列表
@@ -1462,6 +1463,8 @@ def QA_fetch_get_extensionmarket_list(ip=None, port=None):
                                                                                drop=False)
 
 
+
+# QA_fetch_get_future_list函数的主要功能是获取期货市场的列表
 def QA_fetch_get_future_list(ip=None, port=None):
     """[summary]
     Keyword Arguments:
@@ -1486,6 +1489,7 @@ def QA_fetch_get_future_list(ip=None, port=None):
         'market==42 or market==28 or market==29 or market==30 or market==47')
 
 
+# QA_fetch_get_globalindex_list函数的主要功能是获取全球指数的列表，好像并不是很全
 def QA_fetch_get_globalindex_list(ip=None, port=None):
     """全球指数列表
     Keyword Arguments:
@@ -1501,6 +1505,7 @@ def QA_fetch_get_globalindex_list(ip=None, port=None):
     return extension_market_list.query('market==12 or market==37')
 
 
+# QA_fetch_get_goods_list函数的主要功能是获取商品市场的列表
 def QA_fetch_get_goods_list(ip=None, port=None):
     """[summary]
     Keyword Arguments:
@@ -1525,6 +1530,8 @@ def QA_fetch_get_goods_list(ip=None, port=None):
         'market==50 or market==76 or market==46')
 
 
+
+# QA_fetch_get_globalfuture_list函数的主要功能是获取全球期货市场的列表
 def QA_fetch_get_globalfuture_list(ip=None, port=None):
     """[summary]
     Keyword Arguments:
