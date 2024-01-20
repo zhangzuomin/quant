@@ -1548,7 +1548,7 @@ def QA_fetch_get_globalfuture_list(ip=None, port=None):
        39         3      马来期货         ML
     """
 
-    global extension_market_list
+    global extension_market_list 
     extension_market_list = QA_fetch_get_extensionmarket_list(
     ) if extension_market_list is None else extension_market_list
 
@@ -1556,7 +1556,8 @@ def QA_fetch_get_globalfuture_list(ip=None, port=None):
         'market==14 or market==15 or market==16 or market==17 or market==18 or market==19 or market==20 or market==77 or market==39')
 
 
-def QA_fetch_get_hkstock_list(ip=None, port=None):
+# QA_fetch_get_hkstock_list函数的主要作用是从扩展市场（例如香港股市）的通达信（TDX）服务器获取所有的香港主板和香港创业板的股票列表
+def QA_fetch_get_hkstock_list(ip=None, port=None): 
     """[summary]
     Keyword Arguments:
         ip {[type]} -- [description] (default: {None})
@@ -1571,13 +1572,14 @@ def QA_fetch_get_hkstock_list(ip=None, port=None):
 
     global extension_market_list
     extension_market_list = QA_fetch_get_extensionmarket_list(
-    ) if extension_market_list is None else extension_market_list
+    ) if extension_market_list is None else extension_market_list 
 
     return extension_market_list.query('market==31 or market==48')
 
 
+# QA_fetch_get_hkindex_list函数的主要作用是从扩展市场（例如香港股市）的通达信（TDX）服务器获取港股指数列表
 def QA_fetch_get_hkindex_list(ip=None, port=None):
-    """[summary]
+    """[summary] 
     Keyword Arguments:
         ip {[type]} -- [description] (default: {None})
         port {[type]} -- [description] (default: {None})
@@ -1596,6 +1598,7 @@ def QA_fetch_get_hkindex_list(ip=None, port=None):
     return extension_market_list.query('market==27')
 
 
+# QA_fetch_get_hkindex_list函数的主要作用是从扩展市场（例如香港股市）的通达信（TDX）服务器获取港股基金列表
 def QA_fetch_get_hkfund_list(ip=None, port=None):
     """[summary]
     Keyword Arguments:
@@ -1616,12 +1619,14 @@ def QA_fetch_get_hkfund_list(ip=None, port=None):
     return extension_market_list.query('market==49')
 
 
-def QA_fetch_get_usstock_list(ip=None, port=None):
+
+QA_fetch_get_usstock_list函数的主要作用是从扩展市场（例如美股市场）的通达信（TDX）服务器获取所有的美国股票、中国概念股和美股知名公司的股票列表
+def QA_fetch_get_usstock_list(ip=None, port=None): 
     """[summary]
     Keyword Arguments:
         ip {[type]} -- [description] (default: {None})
         port {[type]} -- [description] (default: {None})
-    ## 美股 USA STOCK
+    ## 美股 USA STOCK 
         74        13      美国股票         US
         40        11     中国概念股         CH
         41        11    美股知名公司         MG
@@ -1635,7 +1640,8 @@ def QA_fetch_get_usstock_list(ip=None, port=None):
         'market==74 or market==40 or market==41')
 
 
-def QA_fetch_get_macroindex_list(ip=None, port=None):
+# QA_fetch_get_macroindex_list 函数的主要作用是从扩展市场（例如宏观指标市场）的通达信（TDX）服务器获取所有的宏观指标列表
+def QA_fetch_get_macroindex_list(ip=None, port=None): 
     """宏观指标列表
     Keyword Arguments:
         ip {[type]} -- [description] (default: {None})
@@ -1647,6 +1653,13 @@ def QA_fetch_get_macroindex_list(ip=None, port=None):
     ) if extension_market_list is None else extension_market_list
 
     return extension_market_list.query('market==38')
+
+
+
+###############################################################
+#   期权
+###############################################################
+
 
 
 def QA_fetch_get_option_all_contract_time_to_market():
