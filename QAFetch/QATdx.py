@@ -1661,7 +1661,7 @@ def QA_fetch_get_macroindex_list(ip=None, port=None): 
 ###############################################################
 
 
-
+# QA_fetch_get_option_all_contract_time_to_market函数的主要功能是获取期权合约的上市日期
 def QA_fetch_get_option_all_contract_time_to_market():
     '''
     #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -1956,6 +1956,7 @@ def QA_fetch_get_option_all_contract_time_to_market():
 ###############################################################
 
 
+# QA_fetch_get_option_list函数的主要功能是获取期权市场的列表
 def QA_fetch_get_option_list(ip=None, port=None):
     """期权列表
     Keyword Arguments:
@@ -1979,7 +1980,7 @@ def QA_fetch_get_option_list(ip=None, port=None):
 
 ###############################################################
 # 期权合约分类
-# 50ETF
+# 50ETF 300ETF
 # 棉花
 # 天然橡胶
 # 铜
@@ -1990,6 +1991,9 @@ def QA_fetch_get_option_list(ip=None, port=None):
 ###############################################################
 # 50ETF
 ###############################################################
+
+
+# QA_fetch_get_option_50etf_list函数的主要功能是获取50ETF期权合约的列表
 def QA_fetch_get_option_50etf_list():
     '''
         #🛠todo 获取50ETF期权合约的列表。
@@ -2006,6 +2010,8 @@ def QA_fetch_get_option_50etf_list():
     result = result.assign(meaningful_name=result.apply(__meaningful_name, axis=1))
     return result
 
+
+# QA_fetch_get_option_50etf_contract_time_to_market函数的主要功能是获取50ETF期权合约的上市日期
 def QA_fetch_get_option_50etf_contract_time_to_market():
     '''
         #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2017,6 +2023,8 @@ def QA_fetch_get_option_50etf_contract_time_to_market():
     return rows
 
 
+
+# QA_fetch_get_option_300etf_contract_time_to_market函数的主要功能是获取300ETF期权合约的列表
 def QA_fetch_get_option_300etf_contract_time_to_market():
     '''
         #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2104,6 +2112,8 @@ def QA_fetch_get_option_300etf_contract_time_to_market():
 ###############################################################
 # 棉花
 ###############################################################
+
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取棉花期权（CF开头）的列表
 def QA_fetch_get_commodity_option_CF_contract_time_to_market():
     '''
     铜期权  CU 开头   上期证
@@ -2142,7 +2152,7 @@ def QA_fetch_get_commodity_option_CF_contract_time_to_market():
 # 天然橡胶
 ###############################################################
 
-
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取橡胶期权的列表
 def QA_fetch_get_commodity_option_RU_contract_time_to_market():
     '''
     铜期权  CU 开头   上期证
@@ -2182,7 +2192,7 @@ def QA_fetch_get_commodity_option_RU_contract_time_to_market():
 # 帅选M开头的合约
 ###############################################################
 
-
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取玉米期权的列表
 def QA_fetch_get_commodity_option_C_contract_time_to_market():
     '''
     铜期权  CU 开头   上期证
@@ -2221,7 +2231,7 @@ def QA_fetch_get_commodity_option_C_contract_time_to_market():
 # 铜
 ###############################################################
 
-
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取铜期权（AU开头）的列表
 def QA_fetch_get_commodity_option_CU_contract_time_to_market():
     '''
     #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2257,7 +2267,7 @@ def QA_fetch_get_commodity_option_CU_contract_time_to_market():
 # 金
 ###############################################################
 
-
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取黄金期权的列表
 def QA_fetch_get_commodity_option_AU_contract_time_to_market():
     '''
     #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2290,6 +2300,8 @@ def QA_fetch_get_commodity_option_AU_contract_time_to_market():
 ###############################################################
 # al 铝
 ###############################################################
+
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取铝期权的列表
 def QA_fetch_get_commodity_option_AL_contract_time_to_market():
     '''
     #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2321,6 +2333,8 @@ def QA_fetch_get_commodity_option_AL_contract_time_to_market():
 ###############################################################
 # 豆粕
 ###############################################################
+
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取豆粕期权的列表
 def QA_fetch_get_commodity_option_M_contract_time_to_market():
     '''
     #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2358,6 +2372,8 @@ def QA_fetch_get_commodity_option_M_contract_time_to_market():
 ###############################################################
 # 白糖
 ###############################################################
+
+# QA_fetch_get_commodity_option_CF_contract_time_to_market函数的主要功能是获取白糖期权的列表
 def QA_fetch_get_commodity_option_SR_contract_time_to_market():
     '''
     #🛠todo 获取期权合约的上市日期 ？ 暂时没有。
@@ -2393,7 +2409,7 @@ def QA_fetch_get_commodity_option_SR_contract_time_to_market():
 
 #########################################################################################
 
-
+# QA_fetch_get_exchangerate_list函数的主要功能是获取汇率列表
 def QA_fetch_get_exchangerate_list(ip=None, port=None):
     """汇率列表
     Keyword Arguments:
@@ -2411,6 +2427,7 @@ def QA_fetch_get_exchangerate_list(ip=None, port=None):
         'category==4')
 
 
+# QA_fetch_get_future_day函数的主要功能是获取期货的日线数据
 def QA_fetch_get_future_day(code, start_date, end_date, frequence='day',
                             ip=None, port=None):
     '期货数据 日线'
@@ -2457,6 +2474,7 @@ def QA_fetch_get_future_day(code, start_date, end_date, frequence='day',
             date=data['date'].apply(lambda x: str(x)[0:10]))
 
 
+# QA_fetch_get_future_day函数的主要功能是获取期货的分钟线数据
 def QA_fetch_get_future_min(code, start, end, frequence='1min', ip=None,
                             port=None):
     '期货数据 分钟线'
@@ -2516,6 +2534,7 @@ def QA_fetch_get_future_min(code, start, end, frequence='1min', ip=None,
             start:end].sort_index()
 
 
+# QA_fetch_get_future_day函数的主要功能是获取期货的交易量数据
 def __QA_fetch_get_future_transaction(code, day, retry, code_market, apix):
     batch_size = 1800  # 800 or 2000 ? 2000 maybe also works
     data_arr = []
@@ -2547,6 +2566,7 @@ def __QA_fetch_get_future_transaction(code, day, retry, code_market, apix):
                                                          inplace=False)
 
 
+# QA_fetch_get_future_day函数的主要功能是获取期货的交易量数据
 def QA_fetch_get_future_transaction(code, start, end, retry=4, ip=None,
                                     port=None):
     '期货历史成交分笔'
@@ -2590,6 +2610,7 @@ def QA_fetch_get_future_transaction(code, start, end, retry=4, ip=None,
             return None
 
 
+# QA_fetch_get_future_day函数的主要功能是获取期货的实时交易量数据
 def QA_fetch_get_future_transaction_realtime(code, ip=None, port=None):
     '期货历史成交分笔'
     ip, port = get_extensionmarket_ip(ip, port)
@@ -2612,6 +2633,8 @@ def QA_fetch_get_future_transaction_realtime(code, ip=None, port=None):
                                                     inplace=False)
 
 
+
+# QA_fetch_get_future_day函数的主要功能是获取期货的实时交易价格数据
 def QA_fetch_get_future_realtime(code, ip=None, port=None):
     '期货实时价格'
     ip, port = get_extensionmarket_ip(ip, port)
@@ -2636,6 +2659,8 @@ def QA_fetch_get_future_realtime(code, ip=None, port=None):
 ###############################################################
 # HKSTOCK
 ###############################################################
+
+# QA_fetch_get_hkstock_list函数的主要功能是获取香港股票市场的列表
 @retry(stop_max_attempt_number=3, wait_random_min=50, wait_random_max=100)
 def QA_fetch_get_hkstock_list(ip=None, port=None):
     """hkstock
@@ -2648,6 +2673,12 @@ def QA_fetch_get_hkstock_list(ip=None, port=None):
     ) if extension_market_list is None else extension_market_list
 
     return extension_market_list.query('category==2 and market==31')
+
+
+
+################################################################################
+# 通过给函数创建别名，将不同市场的数据获取函数映射到相应的期货数据获取函数
+################################################################################
 
 QA_fetch_get_option_day = QA_fetch_get_future_day
 QA_fetch_get_option_min = QA_fetch_get_future_min
@@ -2679,6 +2710,8 @@ QA_fetch_get_globalindex_day = QA_fetch_get_future_day
 QA_fetch_get_globalindex_min = QA_fetch_get_future_min
 
 
+
+# QA_fetch_get_wholemarket_list函数的主要功能是获取全市场的股票列表，包括主板、中小板、创业板、科创板等所有板块的股票
 def QA_fetch_get_wholemarket_list():
     hq_codelist = QA_fetch_get_stock_list(
         type_='all').loc[:, ['code', 'name']].set_index(['code', 'name'],
