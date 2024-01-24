@@ -91,12 +91,14 @@ from multiprocessing import cpu_count
 
 # ip=select_best_ip()
 
-
+# now_time函数的主要功能是获取当前的交易时间
 def now_time():
     return str(QA_util_get_real_date(str(datetime.date.today() - datetime.timedelta(days=1)), trade_date_sse, -1)) + \
            ' 17:00:00' if datetime.datetime.now().hour < 15 else str(QA_util_get_real_date(
         str(datetime.date.today()), trade_date_sse, -1)) + ' 15:00:00'
 
+
+# QA_SU_save_single_stock_day函数的主要功能是保存单个股票的日线数据
 def QA_SU_save_single_stock_day(code : str, client= DATABASE, ui_log=None):
     '''
      save single stock_day
@@ -187,6 +189,7 @@ def QA_SU_save_single_stock_day(code : str, client= DATABASE, ui_log=None):
         QA_util_log_info(err, ui_log)
 
 
+# QA_SU_save_single_stock_day函数的主要功能是保存股票的日线数据
 def QA_SU_save_stock_day(client=DATABASE, ui_log=None, ui_progress=None):
     '''
      save stock_day
@@ -292,6 +295,7 @@ def QA_SU_save_stock_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log)
 
 
+# gen_param函数的主要功能是生成用于多进程处理的参数列表，以便并发地获取股票数据
 def gen_param(codelist, start_date=None, end_date=None, if_fq='00', frequence='day', IPList=[]):
     # 生成QA.QAFetch.QATdx.QQA_fetch_get_stock_day多进程处理的参数
     count = len(IPList)
@@ -302,6 +306,8 @@ def gen_param(codelist, start_date=None, end_date=None, if_fq='00', frequence='d
             for code, i in [(code, next(my_iterator) % count) for code in codelist]]
 
 
+
+# QA_SU_save_single_stock_day函数的主要功能是保存单个股票的周线数据
 def QA_SU_save_stock_week(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_week
 
@@ -401,6 +407,7 @@ def QA_SU_save_stock_week(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_single_stock_day函数的主要功能是保存单个股票的月线数据
 def QA_SU_save_stock_month(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_month
 
@@ -500,6 +507,7 @@ def QA_SU_save_stock_month(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_single_stock_day函数的主要功能是保存单个股票的年线数据
 def QA_SU_save_stock_year(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_year
 
@@ -598,6 +606,7 @@ def QA_SU_save_stock_year(client=DATABASE, ui_log=None, ui_progress=None):
     else:
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
+
 
 
 def QA_SU_save_stock_xdxr(client=DATABASE, ui_log=None, ui_progress=None):
@@ -700,7 +709,7 @@ def QA_SU_save_stock_xdxr(client=DATABASE, ui_log=None, ui_progress=None):
         )
         __saving_work(stock_list[i_], coll)
 
-
+# QA_SU_save_stock_xdxr函数的主要功能是保存股票的除权除息数据
 def QA_SU_save_stock_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_min
 
@@ -824,6 +833,9 @@ def QA_SU_save_stock_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+
+# QA_SU_save_stock_xdxr函数的主要功能是保存股票的分钟线数据
 def QA_SU_save_single_stock_min(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     """save single stock_min
 
@@ -948,6 +960,8 @@ def QA_SU_save_single_stock_min(code : str, client=DATABASE, ui_log=None, ui_pro
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+# QA_SU_save_stock_xdxr函数的主要功能是保存股票的指数数据
 def QA_SU_save_single_index_day(code : str, client=DATABASE, ui_log=None):
     """save index_day
 
@@ -1042,6 +1056,8 @@ def QA_SU_save_single_index_day(code : str, client=DATABASE, ui_log=None):
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+# QA_SU_save_index_day`函数的主要功能是保存指数的日线数据
 def QA_SU_save_index_day(client=DATABASE, ui_log=None, ui_progress=None):
     """save index_day
 
@@ -1153,6 +1169,8 @@ def QA_SU_save_index_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_index_day`函数的主要功能是保存指数分钟线数据
 def QA_SU_save_index_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save index_min
 
@@ -1278,6 +1296,8 @@ def QA_SU_save_index_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+# QA_SU_save_index_day`函数的主要功能是保存单个指数的分钟线数据
 def QA_SU_save_single_index_min(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     """save single index_min
 
@@ -1404,7 +1424,7 @@ def QA_SU_save_single_index_min(code : str, client=DATABASE, ui_log=None, ui_pro
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
-
+# QA_SU_save_index_day`函数的主要功能是保存单个ETF的日线数据
 def QA_SU_save_single_etf_day(code : str, client=DATABASE, ui_log=None):
     """save etf_day
 
@@ -1480,6 +1500,7 @@ def QA_SU_save_single_etf_day(code : str, client=DATABASE, ui_log=None):
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+# QA_SU_save_index_day`函数的主要功能是保存ETF的日线数据
 def QA_SU_save_etf_day(client=DATABASE, ui_log=None, ui_progress=None):
     """save etf_day
 
@@ -1574,6 +1595,7 @@ def QA_SU_save_etf_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_index_day`函数的主要功能是保存单个ETF的分钟线数据
 def QA_SU_save_etf_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save etf_min
 
@@ -1700,6 +1722,9 @@ def QA_SU_save_etf_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+
+# QA_SU_save_index_day`函数的主要功能是保存ETF的分钟线数据
 def QA_SU_save_single_etf_min(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     """save single etf_min
 
@@ -1828,6 +1853,8 @@ def QA_SU_save_single_etf_min(code : str, client=DATABASE, ui_log=None, ui_progr
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_index_day`函数的主要功能是保存股票列表数据
 def QA_SU_save_stock_list(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_list
 
@@ -1862,6 +1889,9 @@ def QA_SU_save_stock_list(client=DATABASE, ui_log=None, ui_progress=None):
         pass
 
 
+
+
+# QA_SU_save_index_day`函数的主要功能是保存ETF列表数据
 def QA_SU_save_etf_list(client=DATABASE, ui_log=None, ui_progress=None):
     """save etf_list
 
@@ -1896,6 +1926,8 @@ def QA_SU_save_etf_list(client=DATABASE, ui_log=None, ui_progress=None):
         pass
 
 
+
+# QA_SU_save_index_day`函数的主要功能是保存股票板块数据
 def QA_SU_save_stock_block(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_block
 
@@ -1975,6 +2007,9 @@ def QA_SU_save_stock_block(client=DATABASE, ui_log=None, ui_progress=None):
         pass
 
 
+
+
+# QA_SU_save_index_day`函数的主要功能是保存股票信息数据
 def QA_SU_save_stock_info(client=DATABASE, ui_log=None, ui_progress=None):
     """save stock_info
 
@@ -2024,6 +2059,7 @@ def QA_SU_save_stock_info(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_index_day`函数的主要功能是保存股票交易量数据
 def QA_SU_save_stock_transaction(
         client=DATABASE,
         ui_log=None,
@@ -2095,6 +2131,9 @@ def QA_SU_save_stock_transaction(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_index_day`函数的主要功能是保存指数交易量数据
 def QA_SU_save_index_transaction(
         client=DATABASE,
         ui_log=None,
@@ -2164,15 +2203,17 @@ def QA_SU_save_index_transaction(
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
-########################################################################################################
 
+
+
+########################################################################################################
 
 def _save_option_commodity_ru_day(
         client=DATABASE,
         ui_log=None,
         ui_progress=None
 ):
-    ##################### ru 天然橡胶 ############################################################################
+##################### ru 天然橡胶 ############################################################################
     option_ru_contract_list = QA_fetch_get_commodity_option_RU_contract_time_to_market()
     coll_option_commodity_ru_day = client.option_commodity_ru_day
     coll_option_commodity_ru_day.create_index(
