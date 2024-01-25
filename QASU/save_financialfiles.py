@@ -30,12 +30,14 @@ from QUANTAXIS.QAFetch.QAfinancial import (download_financialzip, parse_all,
                                            parse_filelist,download_financialzip_fromtdx)
 from QUANTAXIS.QASetting.QALocalize import (cache_path, download_path, qa_path,
                                             setting_path)
-from QUANTAXIS.QAUtil import DATABASE, QA_util_date_int2str
+from QUANTAXIS.QAUtil import DATABASE, QA_util_date_int2str 
 from QUANTAXIS.QAUtil.QASql import ASCENDING, DESCENDING
 from QUANTAXIS.QAUtil.QATransform import QA_util_to_json_from_pandas
 import datetime
 
 
+
+# save_financialfiles.py 模块的主要功能是下载和保存财务数据
 def QA_SU_save_financial_files(fromtdx=False):
     """本地存储financialdata
     """
@@ -46,7 +48,7 @@ def QA_SU_save_financial_files(fromtdx=False):
         
     coll = DATABASE.financial
     coll.create_index(
-        [("code", ASCENDING), ("report_date", ASCENDING)], unique=True)
+        [("code", ASCENDING), ("report_date", ASCENDING)], unique=True) 
     for item in os.listdir(download_path):
         if item[0:4] != 'gpcw':
             print(
