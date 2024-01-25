@@ -2208,12 +2208,17 @@ def QA_SU_save_index_transaction(
 
 ########################################################################################################
 
+
+
+
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权天然橡胶的日线数据
 def _save_option_commodity_ru_day(
         client=DATABASE,
         ui_log=None,
         ui_progress=None
 ):
-##################### ru 天然橡胶 ############################################################################
+  ##################### ru 天然橡胶 ############################################################################
     option_ru_contract_list = QA_fetch_get_commodity_option_RU_contract_time_to_market()
     coll_option_commodity_ru_day = client.option_commodity_ru_day
     coll_option_commodity_ru_day.create_index(
@@ -2233,7 +2238,7 @@ def _save_option_commodity_ru_day(
                 ui_log=ui_log
             )
 
-            # 首选查找数据库 是否 有 这个代码的数据
+            # 首选查找数据库是否有这个代码的数据
             ref = coll_option_commodity_ru_day.find({'code': str(code)[0:8]})
             end_date = str(now_time())[0:10]
 
@@ -2360,12 +2365,14 @@ def _save_option_commodity_ru_day(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权玉米的日线数据
 def _save_option_commodity_c_day(
         client=DATABASE,
         ui_log=None,
         ui_progress=None,
 ):
-    ##################### c  玉米 ############################################################################
+    ##################### 玉米 ############################################################################
     option_c_contract_list = QA_fetch_get_commodity_option_C_contract_time_to_market()
 
 
@@ -2387,7 +2394,7 @@ def _save_option_commodity_c_day(
                 ui_log=ui_log
             )
 
-            # 首选查找数据库 是否 有 这个代码的数据
+            # 首选查找数据库是否有这个代码的数据
             ref = coll_option_commodity_c_day.find({'code': str(code)[0:8]})
             end_date = str(now_time())[0:10]
 
@@ -2514,6 +2521,7 @@ def _save_option_commodity_c_day(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# _save_option_commodity_ru_day函数的主要功能是保存期权棉花的日线数据
 def _save_option_commodity_cf_day(
         client=DATABASE,
         ui_log=None,
@@ -2666,6 +2674,9 @@ def _save_option_commodity_cf_day(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权白糖的日线数据
 def _save_option_commodity_sr_day(
         client=DATABASE,
         ui_log=None,
@@ -2819,6 +2830,10 @@ def _save_option_commodity_sr_day(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权豆粕的日线数据
 def _save_option_commodity_m_day(
         client=DATABASE,
         ui_log=None,
@@ -2974,6 +2989,9 @@ def _save_option_commodity_m_day(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权铝的日线数据
 def _save_option_commodity_al_day(client=DATABASE,ui_log=None,ui_progress=None):
 
     ##################### Al 铝 ############################################################################
@@ -3128,6 +3146,8 @@ def _save_option_commodity_al_day(client=DATABASE,ui_log=None,ui_progress=None):
 
 
 
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权铜的日线数据
 def _save_option_commodity_cu_day(
         client=DATABASE,
         ui_log=None,
@@ -3282,6 +3302,10 @@ def _save_option_commodity_cu_day(
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+
+# _save_option_commodity_ru_day函数的主要功能是保存期权金的日线数据
 def _save_option_commodity_au_day(client=DATABASE,ui_log=None,ui_progress=None):
     ##################### Au 金 ############################################################################
     option_au_contract_list = QA_fetch_get_commodity_option_AU_contract_time_to_market()
@@ -3433,6 +3457,8 @@ def _save_option_commodity_au_day(client=DATABASE,ui_log=None,ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_option_commodity_day函数的主要功能是保存各种商品期权的日线数据
 def QA_SU_save_option_commodity_day(
         client=DATABASE,
         ui_log=None,
@@ -3493,7 +3519,7 @@ def QA_SU_save_option_commodity_day(
 todo: 代码需要重构 ， 把重复的代码合并在一起
 '''
 
-
+# _save_option_commodity_ru_min函数的主要功能是保存期权天然橡胶的分钟线数据
 def _save_option_commodity_ru_min(
         client=DATABASE,
         ui_log=None,
@@ -3643,6 +3669,8 @@ def _save_option_commodity_ru_min(
     pass
 
 
+
+# _save_option_commodity_ru_min函数的主要功能是保存期权玉米的分钟线数据
 def _save_option_commodity_c_min(
         client=DATABASE,
         ui_log=None,
@@ -3790,6 +3818,9 @@ def _save_option_commodity_c_min(
         QA_util_log_info(err, ui_log=ui_log)
 
     pass
+
+
+
 
 
 def _save_option_commodity_cf_min(
@@ -3941,6 +3972,9 @@ def _save_option_commodity_cf_min(
     pass
 
 
+
+
+# _save_option_commodity_ru_min函数的主要功能是保存期权天然橡胶的分钟线数据
 def _save_option_commodity_ru_min(
         client=DATABASE,
         ui_log=None,
@@ -4091,6 +4125,8 @@ def _save_option_commodity_ru_min(
     pass
 
 
+
+# _save_option_commodity_ru_min函数的主要功能是保存期权铜的分钟线数据
 def _save_option_commodity_cu_min(
         client=DATABASE,
         ui_log=None,
@@ -4242,7 +4278,7 @@ def _save_option_commodity_cu_min(
 
 
 
-
+# _save_option_commodity_ru_min函数的主要功能是保存期权黄金的分钟线数据
 def _save_option_commodity_au_min(
         client=DATABASE,
         ui_log=None,
@@ -4394,6 +4430,7 @@ def _save_option_commodity_au_min(
 
 
 
+# _save_option_commodity_ru_min函数的主要功能是保存期权铝的分钟线数据
 def _save_option_commodity_al_min(
         client=DATABASE,
         ui_log=None,
@@ -4543,6 +4580,9 @@ def _save_option_commodity_al_min(
     pass
 
 
+
+
+# _save_option_commodity_ru_min函数的主要功能是保存期权白糖的分钟线数据
 def _save_option_commodity_sr_min(
         client=DATABASE,
         ui_log=None,
@@ -4693,6 +4733,8 @@ def _save_option_commodity_sr_min(
     pass
 
 
+
+# _save_option_commodity_ru_min函数的主要功能是保存期权豆粕的分钟线数据
 def _save_option_commodity_m_min(
         client=DATABASE,
         ui_log=None,
@@ -4839,7 +4881,7 @@ def _save_option_commodity_m_min(
 
     pass
 
-
+# QA_SU_save_option_commodity_min函数的主要功能是保存各种商品期权的分钟线数据
 def QA_SU_save_option_commodity_min(
         client=DATABASE,
         ui_log=None,
@@ -4897,6 +4939,10 @@ def QA_SU_save_option_commodity_min(
         ui_progress=ui_progress
     )
 
+
+
+
+# QA_SU_save_option_50etf_min函数的主要功能是保存50ETF期权的分钟线数据
 def QA_SU_save_option_50etf_min(client=DATABASE, ui_log=None, ui_progress=None):
     '''
     :param client:
@@ -5033,6 +5079,9 @@ def QA_SU_save_option_50etf_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_option_50etf_min函数的主要功能是保存50ETF期权的日线数据
 def QA_SU_save_option_50etf_day(client=DATABASE, ui_log=None, ui_progress=None):
     '''
     :param client:
@@ -5182,6 +5231,8 @@ def QA_SU_save_option_50etf_day(client=DATABASE, ui_log=None, ui_progress=None):
 
 
 
+
+# QA_SU_save_option_50etf_min函数的主要功能是保存300ETF期权的分钟线数据
 def QA_SU_save_option_300etf_min(client=DATABASE, ui_log=None, ui_progress=None):
     '''
     :param client:
@@ -5318,6 +5369,9 @@ def QA_SU_save_option_300etf_min(client=DATABASE, ui_log=None, ui_progress=None)
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_option_50etf_min函数的主要功能是保存300ETF期权的日线数据
 def QA_SU_save_option_300etf_day(client=DATABASE, ui_log=None, ui_progress=None):
     '''
     :param client:
@@ -5466,6 +5520,9 @@ def QA_SU_save_option_300etf_day(client=DATABASE, ui_log=None, ui_progress=None)
 
 
 
+
+
+# 这个QA_SU_save_option_contract_list函数的主要功能是保存期权合约列表
 def QA_SU_save_option_contract_list(
         client=DATABASE,
         ui_log=None,
@@ -5530,6 +5587,10 @@ def QA_SU_save_option_contract_list(
         print(" Error save_tdx.QA_SU_save_option_contract_list exception!")
 
 
+
+
+
+# 这个QA_SU_save_option_day_all函数的主要功能是保存所有期权的日线数据
 def QA_SU_save_option_day_all(client=DATABASE,ui_log=None,ui_progress=None):
     option_contract_list = QA_fetch_get_option_all_contract_time_to_market()
     coll_option_day = client.option_day_all
@@ -5676,7 +5737,7 @@ def QA_SU_save_option_day_all(client=DATABASE,ui_log=None,ui_progress=None):
 
 
 
-
+这个QA_SU_save_option_day_all函数的主要功能是保存所有期权的分钟线数据
 def QA_SU_save_option_min_all(client=DATABASE, ui_log=None, ui_progress=None):
     '''
     :param client:
@@ -5813,8 +5874,11 @@ def QA_SU_save_option_min_all(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
-#######################################################################################
+##########################################期货#############################################
 
+
+
+# QA_SU_save_future_list函数的主要功能是保存期货合约列表
 def QA_SU_save_future_list(client=DATABASE, ui_log=None, ui_progress=None):
     future_list = QA_fetch_get_future_list()
     coll_future_list = client.future_list
@@ -5828,6 +5892,8 @@ def QA_SU_save_future_list(client=DATABASE, ui_log=None, ui_progress=None):
         pass
 
 
+
+# QA_SU_save_future_list函数的主要功能是保存指数合约列表
 def QA_SU_save_index_list(client=DATABASE, ui_log=None, ui_progress=None):
     index_list = QA_fetch_get_index_list()
     coll_index_list = client.index_list
@@ -5841,6 +5907,10 @@ def QA_SU_save_index_list(client=DATABASE, ui_log=None, ui_progress=None):
     except:
         pass
 
+
+
+
+# QA_SU_save_future_list函数的主要功能是保存单个期货日线数据
 def QA_SU_save_single_future_day(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     '''
      save single_future_day
@@ -5929,6 +5999,10 @@ def QA_SU_save_single_future_day(code : str, client=DATABASE, ui_log=None, ui_pr
         QA_util_log_info(' ERROR CODE \n ', ui_log)
         QA_util_log_info(err, ui_log)
 
+
+
+
+# QA_SU_save_future_list函数的主要功能是保存期货日线数据
 def QA_SU_save_future_day(client=DATABASE, ui_log=None, ui_progress=None):
     '''
      save future_day
@@ -6037,6 +6111,10 @@ def QA_SU_save_future_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log)
 
 
+
+
+
+# QA_SU_save_future_list函数的主要功能是保存单个期货数据全部日线数据
 def QA_SU_save_future_day_all(client=DATABASE, ui_log=None, ui_progress=None):
     '''
      save future_day_all
@@ -6240,6 +6318,10 @@ def QA_SU_save_single_future_min(code : str, client=DATABASE, ui_log=None, ui_pr
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+
+
+# QA_SU_save_future_list函数的主要功能是保存期货分钟线数据
 def QA_SU_save_future_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save future_min
 
@@ -6373,6 +6455,9 @@ def QA_SU_save_future_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_future_list函数的主要功能是保存期货全部分钟线数据
 def QA_SU_save_future_min_all(client=DATABASE, ui_log=None, ui_progress=None):
     """save future_min_all  (全部, 包含单月合约)
 
@@ -6502,6 +6587,8 @@ def QA_SU_save_future_min_all(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_single_bond_day函数的主要功能是保存单个债券的日线数据
 def QA_SU_save_single_bond_day(code : str, client=DATABASE, ui_log=None):
     """save bond_day
 
@@ -6578,6 +6665,9 @@ def QA_SU_save_single_bond_day(code : str, client=DATABASE, ui_log=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_single_bond_day函数的主要功能是保存债券的日线数据
 def QA_SU_save_bond_day(client=DATABASE, ui_log=None, ui_progress=None):
     """save bond_day
 
@@ -6672,6 +6762,8 @@ def QA_SU_save_bond_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_single_bond_day函数的主要功能是保存债券的分钟线数据
 def QA_SU_save_bond_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save bond_min
 
@@ -6799,6 +6891,9 @@ def QA_SU_save_bond_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_single_bond_day函数的主要功能是保存单个债券的分钟线数据
 def QA_SU_save_single_bond_min(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     """save single bond_min
 
@@ -6927,6 +7022,9 @@ def QA_SU_save_single_bond_min(code : str, client=DATABASE, ui_log=None, ui_prog
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_single_bond_day函数的主要功能是保存债券列表
 def QA_SU_save_bond_list(client=DATABASE, ui_log=None, ui_progress=None):
     """save bond_list
 
@@ -6960,9 +7058,15 @@ def QA_SU_save_bond_list(client=DATABASE, ui_log=None, ui_progress=None):
         print(" Error save_tdx.QA_SU_save_bond_list exception!")
         pass
 
+
+
+
 ###############################################################
 # HKSTOCK
 ###############################################################
+
+
+# QA_SU_save_hkstock_day函数的主要功能是保存单只香港股票的日线数据
 def QA_SU_save_single_hkstock_day(code : str, client=DATABASE, ui_log=None):
     """save bond_day
 
@@ -7039,6 +7143,8 @@ def QA_SU_save_single_hkstock_day(code : str, client=DATABASE, ui_log=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_hkstock_day函数的主要功能是保存香港股票的日线数据
 def QA_SU_save_hkstock_day(client=DATABASE, ui_log=None, ui_progress=None):
     """save hkstock_day
 
@@ -7134,6 +7240,7 @@ def QA_SU_save_hkstock_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_hkstock_day函数的主要功能是保存香港股票的分钟线数据
 def QA_SU_save_hkstock_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save hkstock_min
 
@@ -7261,6 +7368,9 @@ def QA_SU_save_hkstock_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+
+# QA_SU_save_hkstock_day函数的主要功能是保存单只香港股票的分钟线数据
 def QA_SU_save_single_hkstock_min(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     """save single hkstock_min
 
@@ -7389,6 +7499,8 @@ def QA_SU_save_single_hkstock_min(code : str, client=DATABASE, ui_log=None, ui_p
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_hkstock_day函数的主要功能是保存香港股票列表
 def QA_SU_save_hkstock_list(client=DATABASE, ui_log=None, ui_progress=None):
     """save hkstock_list
 
@@ -7426,6 +7538,10 @@ def QA_SU_save_hkstock_list(client=DATABASE, ui_log=None, ui_progress=None):
 ###############################################################
 # USSTOCK
 ###############################################################
+
+
+
+# QA_SU_save_hkstock_day函数的主要功能是保存单只美国股票的日线数据
 def QA_SU_save_single_usstock_day(code : str, client=DATABASE, ui_log=None):
     """save usstock_day
 
@@ -7501,6 +7617,9 @@ def QA_SU_save_single_usstock_day(code : str, client=DATABASE, ui_log=None):
         QA_util_log_info(' ERROR CODE \n ', ui_log=ui_log)
         QA_util_log_info(err, ui_log=ui_log)
 
+
+
+# QA_SU_save_hkstock_day函数的主要功能是保存美国股票的日线数据
 def QA_SU_save_usstock_day(client=DATABASE, ui_log=None, ui_progress=None):
     """save usstock_day
 
@@ -7596,6 +7715,8 @@ def QA_SU_save_usstock_day(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+
+# QA_SU_save_hkstock_day函数的主要功能是保存美国股票的分钟线数据
 def QA_SU_save_usstock_min(client=DATABASE, ui_log=None, ui_progress=None):
     """save usstock_min
 
@@ -7723,6 +7844,7 @@ def QA_SU_save_usstock_min(client=DATABASE, ui_log=None, ui_progress=None):
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_hkstock_day函数的主要功能是保存单只美国股票的分钟线数据
 def QA_SU_save_single_usstock_min(code : str, client=DATABASE, ui_log=None, ui_progress=None):
     """save single usstock_min
 
@@ -7851,6 +7973,7 @@ def QA_SU_save_single_usstock_min(code : str, client=DATABASE, ui_log=None, ui_p
         QA_util_log_info(err, ui_log=ui_log)
 
 
+# QA_SU_save_hkstock_day函数的主要功能是保存美国股票列表
 def QA_SU_save_usstock_list(client=DATABASE, ui_log=None, ui_progress=None):
     """save usstock_list
 
