@@ -23,7 +23,10 @@ STOCK_IP_FILE_PATH = '{}{}{}'.format(setting_path, os.sep, 'stock_ip.json')
 FUTURE_IP_FILE_PATH = '{}{}{}'.format(setting_path, os.sep, 'future_ip.json')
 
 
-class QA_Setting():
+
+
+# QA_Setting 类是 QUANTAXIS 库中的一个配置类，主要用于处理和管理 QUANTAXIS 的配置信息
+class QA_Setting(): 
 
     def __init__(self, uri=None):
         self.lock = Lock()
