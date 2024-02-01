@@ -193,6 +193,14 @@ DATABASE = QASETTING.client.quantaxis
 DATABASE_ASYNC = QASETTING.client_async.quantaxis
 
 
+
+
+
+
+
+
+
+# exclude_from_stock_ip_list函数的主要功能是从stock_ip_list和future_ip_list中删除指定的IP地址
 def exclude_from_stock_ip_list(exclude_ip_list):
     """
     explanation:
