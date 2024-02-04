@@ -34,7 +34,8 @@ def parse_orderdirection(od):
     return direction, offset
 
 
-class QIFI_Account():
+
+class QIFI_Account():  
 
     def __init__(self, username, password, model="SIM", broker_name="QAPaperTrading", portfolioname='QAPaperTrade',
                  trade_host=mongo_ip, init_cash=1000000, taskid=str(uuid.uuid4()), nodatabase=False, dbname='mongodb',
@@ -61,7 +62,7 @@ class QIFI_Account():
         self.source_id = "QIFI_Account"  # 识别号
         self.market_preset = MARKET_PRESET()
         # 指的是 Account所属的账户编组(实时的时候的账户观察组)
-        self.portfolio = portfolioname
+        self.portfolio = portfolioname 
         self.model = model
 
         self.broker_name = broker_name    # 所属期货公司/ 模拟的组
@@ -113,11 +114,14 @@ class QIFI_Account():
         self._clickhouse_user = clickhouse_user
         self._clickhouse_password = clickhouse_password
 
-    def initial(self):
-        if not self.nodatabase:
-            if self.dbname in ['ck', 'clickhouse']:
+   
+    
+    # initial函数的作用是初始化一个账户
+    def initial(self): 
+        if not self.nodatabase:  
+            if self.dbname in ['ck', 'clickhouse']: 
                 self.db = clickhouse_driver.Client(host=self._clickhouse_ip, port=self._clickhouse_port,
-                                                    user=self._clickhouse_user, password=self._clickhouse_password,
+                                                    user=self._clickhouse_user, password=self._clickhouse_password, 
                                                     database='qifi',
                                                     settings={
                                                         'insert_block_size': 100000000},
