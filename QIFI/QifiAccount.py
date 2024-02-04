@@ -150,8 +150,9 @@ class QIFI_Account():  
 
 
 
+    # 函数的作用是将期货账户的各种信息保存到ClickHouse数据库中。
     def save_ck(self):
-        for tablename  in ['accounts', 'positions', 'orders', 'trades', 'banks', 'qifi']:
+        for tablename  in ['accounts', 'positions', 'orders', 'trades', 'banks', 'qifi']: 
             print(tablename)
 
             res = self.get_for_ck(tablename)
