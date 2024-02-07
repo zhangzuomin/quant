@@ -175,6 +175,8 @@ class QIFI_Account():  
         else:
             return self._trading_day
 
+    
+    # reload 方法的主要功能是重新加载账户信息
     def reload(self):
         if self.model.upper() in ['REAL', 'SIM']:
             message = self.db.account.find_one(
