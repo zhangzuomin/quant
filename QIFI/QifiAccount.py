@@ -281,6 +281,10 @@ class QIFI_Account():  
     def update_qifiid(self, val:dict):
         val['qifi_id'] = self.qifi_id
         return val
+
+
+
+    # 根据参数name返回'accounts', 'positions', 'orders', 'trades', 'banks', 'qifi'值的信息
     def get_for_ck(self, name):
         """
         name should be in
@@ -405,6 +409,10 @@ class QIFI_Account():  
                 "trading_day": str(self.trading_day),
                 "status": self.status,
             }]
+
+
+
+    # 该方法的主要功能是将当前对象的状态同步到数据库。
     def sync(self):
         self.on_sync()
         try:
@@ -438,6 +446,8 @@ class QIFI_Account():  
         except:
             traceback.print_exc()
 
+
+    # 该方法的主要功能是结算账户。在金融交易中，结算通常指的是在交易日结束时，清算所有未完成的交易，并更新账户的资金和持仓状态
     def settle(self):
         self.log('settle')
         self.sync()
@@ -482,6 +492,9 @@ class QIFI_Account():  
     def on_reload(self):
         pass
 
+   
+    
+    # 属性装饰器的作用是提供一个统一的接口来获取日期和时间的字符串
     @property
     def dtstr(self):
         if self.model == "BACKTEST":
@@ -489,6 +502,8 @@ class QIFI_Account():  
         else:
             return str(datetime.datetime.now()).replace('.', '_')
 
+    
+    # 这个方法的作用是记录每一次的存款操作，并更新账户的存款和余额
     def ask_deposit(self, money):
 
         self.deposit += money
@@ -502,6 +517,9 @@ class QIFI_Account():  
         }
         self.event[self.dtstr] = "转账成功 {}".format(money)
 
+
+
+    # 这个方法的作用是记录每一次的取款操作，并更新账户的取款额度和总取款
     def ask_withdraw(self, money):
         if self.withdrawQuota > money:
             self.withdrawQuota -= money
@@ -518,6 +536,8 @@ class QIFI_Account():  
             self.event[self.dtstr] = "转账失败: 余额不足 left {}  ask {}".format(
                 self.withdrawQuota, money)
 
+
+    # 方法的作用是创建一个新的模拟账户，并初始化账户的各种属性和信息
     def create_simaccount(self):
         self._trading_day = str(datetime.date.today())
         self.wsuri = "ws://www.yutiansut.com:7988"
@@ -546,6 +566,8 @@ class QIFI_Account():  
         }
         self.ask_deposit(self.init_cash)
 
+
+    # 方法的作用是创建一个新的回测账户，并初始化账户的各种属性和信息
     def create_backtestaccount(self):
         """
         生成一个回测的账户
@@ -581,6 +603,8 @@ class QIFI_Account():  
 
         # self.ask_deposit(self.init_cash)
 
+
+    # 方法的作用是向账户的持仓中添加一个新的持仓，如果这个持仓已经存在，那么就不添加
     def add_position(self, position):
 
         if position.instrument_id not in self.positions.keys():
@@ -601,6 +625,9 @@ class QIFI_Account():  
     def open_orders(self):
         return [item for item in self.orders.values() if item['volume_left'] > 0]
 
+
+
+    # 属性的作用是获取账户的所有信息
     @property
     def message(self):
         return {
@@ -637,6 +664,9 @@ class QIFI_Account():  
             "settlement": {},
         }
 
+    
+
+    # 这个属性返回一个字典，字典中包含了一系列关于账户的信息
     @property
     def account_msg(self):
         return {
