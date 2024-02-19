@@ -710,6 +710,8 @@ class QIFI_Account():  
     def frozen_margin(self):
         return sum([item.get('money') for item in self.frozen.values()])
 
+
+    # 这个方法的主要目的是将输入的时间转换为纳秒级的时间戳
     def transform_dt(self, times):
         if isinstance(times, str):
 
@@ -751,6 +753,8 @@ class QIFI_Account():  
 
         return self.static_balance + self.deposit - self.withdraw + self.float_profit + self.close_profit
 
+    
+    # 这个方法的主要目的是检查是否可以执行一个交易订单
     def order_check(self, code: str, amount: int, price: float, towards: int, order_id: str) -> bool:
         """
         order_check是账户自身的逻辑, 你可以重写这个代码
@@ -844,6 +848,9 @@ class QIFI_Account():  
         # self.order_rule()
         return res
 
+
+
+    # 这个函数的目的是创建一个新的订单，并将其添加到用户的订单列表中
     def send_order(self, code: str, amount: float, price: float, towards: int, order_id: str = '', datetime: str = '') -> dict:
 
         if datetime:
