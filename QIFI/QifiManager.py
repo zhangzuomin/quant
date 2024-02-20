@@ -19,8 +19,12 @@ def mergex(dict1, dict2):
     return dict1
 
 
+
+# 此函数提供了一种简单的方式来确保数据总是以列表的形式返回，无论输入的数据是否是列表
 def promise_list(value):
     return value if isinstance(value, list) else [value]
+
+
 
 
 class QA_QIFIMANAGER():
