@@ -927,12 +927,18 @@ class QIFI_Account():  
 
         self.log('撤单成功 {}'.format(order_id))
 
+    
+
+    # 这个函数主要作用是处理订单的成交，包括更新订单状态、释放冻结资金、更新持仓信息和同步账户信息
     def make_deal(self, order: dict):
         if isinstance(order, dict):
             self.receive_deal(order["instrument_id"], trade_price=order["limit_price"], trade_time=self.dtstr,
                               trade_amount=order["volume_left"], trade_towards=order["towards"],
                               order_id=order['order_id'], trade_id=str(uuid.uuid4()))
 
+    
+    
+    # 
     def receive_deal(self,
                      code,
                      trade_price,
@@ -1040,6 +1046,8 @@ class QIFI_Account():  
         else:
             return self.market_preset.get_exchange(code) + '.' + code
 
+
+    # 该函数用于处理股票价格的变化
     def on_price_change(self, code, price, datetime=None):
         code = self.format_code(code)
 
@@ -1060,6 +1068,8 @@ class QIFI_Account():  
         if datetime:
             self.datetime = datetime
 
+
+    # 该函数用于预调仓，即预先安排一笔交易
     def order_schedule(self, code: str, amount: float, price: float, towards: int, order_id: str = ''):
         """
         预调仓接口
