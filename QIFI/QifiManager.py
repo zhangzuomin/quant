@@ -26,7 +26,7 @@ def promise_list(value):
 
 
 
-
+# 该类用于管理单个qifi的历史交易情况。这个类有许多方法，包括获取历史资产、历史交易、基准资产等
 class QA_QIFIMANAGER():
     """
     用于管理单 qifi 的历史交易情况
@@ -140,6 +140,8 @@ class QA_QIFIMANAGER():
         plt.show()
 
 
+
+# 这个类主要用于管理多个qifi账户的历史交易情况。这个类有许多方法，包括获取所有的投资组合、获取特定投资组合的所有账户、获取历史资产等
 class QA_QIFISMANAGER():
     """
     用于管理多 qifi 的历史交易情况
