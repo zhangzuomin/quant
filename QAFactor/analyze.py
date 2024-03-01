@@ -97,6 +97,10 @@ class FactorAnalyzer:
         # 因子加工与添加因子远期收益
         self.__gen_clean_factor_and_forward_returns()
 
+    
+    
+    
+    # 这个方法的主要目的是格式化因子数据，附加因子远期收益，分组，权重信息
     def __gen_clean_factor_and_forward_returns(self):
         """
         格式化因子数据，附加因子远期收益，分组，权重信息
